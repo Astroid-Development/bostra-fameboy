@@ -1,4 +1,40 @@
-## bostra-fameboy
+# bostra-fameboy
+
+This fork is focused on optimizing the original rcore_arcade and d3-arcade fork for QBCore, and adding some new features like levels of crafting the different consoles to accessing different games, and using the game system only as items in the inventory.
+
+
+
+```	---Fameboy Items
+	['fameboy']                   = { ['name'] = 'fameboy', ['label'] = 'Fameboy', ['weight'] = 125,
+		['type'] = 'item', ['image'] = 'fameboy.png', ['unique'] = true, ['useable'] = true, ['shouldClose'] = true,
+		['combinable'] = { accept = { 'trojan_usb' }, reward = 'fameboyadvanced',
+		anim = { ['dict'] = 'anim@amb@business@weed@weed_inspecting_high_dry@',
+			['lib'] = 'weed_inspecting_high_base_inspector', ['text'] = 'Doing techy stuff...', ['timeOut'] = 7500, } }, ['description'] = 'The Famed and fabled Fameboy' },
+	["brokenretrofameboy"]        = { ["name"] = "brokenretrofameboy", ["label"] = "Broken Retro Fameboy", ["weight"] = 200,
+		["type"] = "item",
+		["image"] = "retrofameboy.png", ["unique"] = false, ["useable"] = false, ["shouldClose"] = false,
+		['combinable'] = { accept = { 'electronickit' }, reward = 'retrofameboy',
+			anim = { ['dict'] = 'anim@amb@business@weed@weed_inspecting_high_dry@',
+				['lib'] = 'weed_inspecting_high_base_inspector', ['text'] = 'Doing techy stuff...', ['timeOut'] = 7500, } },
+		["description"] = "The electronics look fried..." },
+	['retrofameboy']              = { ['name'] = 'retrofameboy', ['label'] = 'Retro Fameboy', ['weight'] = 125,
+		['type'] = 'item', ['image'] = 'retrofameboy.png', ['unique'] = true, ['useable'] = true, ['shouldClose'] = true,
+		['combinable'] = { accept = { 'usb_drive' }, reward = 'fameboy',
+		anim = { ['dict'] = 'anim@amb@business@weed@weed_inspecting_high_dry@',
+			['lib'] = 'weed_inspecting_high_base_inspector', ['text'] = 'Doing techy stuff...', ['timeOut'] = 7500, } }, ['description'] = 'The classic and reliable Retro Fameboy' },
+	['fameboyadvanced']           = { ['name'] = 'fameboyadvanced', ['label'] = 'Fameboy Advanced', ['weight'] = 125,
+		['type'] = 'item', ['image'] = 'fameboyadvanced.png', ['unique'] = true, ['useable'] = true, ['shouldClose'] = true,
+		['combinable'] = nil, ['description'] = 'The advanced Fameboy model' },```
+
+
+
+
+
+
+
+
+
+```Original README```
 # HEAVILY based on [rcore_arcade](https://github.com/Xogy/rcore_arcade)
 
 QBCore Arcade System
