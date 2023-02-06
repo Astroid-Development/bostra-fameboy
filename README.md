@@ -29,7 +29,7 @@ EJS:
         -- this is the name in the menu/ game list
         name = "Contra III",
         -- link to ejs page, link to rom, core, uniquename, and unique id (for net play)
-        link = string.format("nui://bostra-fameboymeboymeboymeboymeboy/html/ejs.html?url=%s&params=%s&name=%s&id=%s", "https://static.emulatorgames.net/roms/super-nintendo/Contra%20III%20-%20The%20Alien%20Wars%20(U)%20[!].zip", "snes", "Contraiii-snes", "4205"),
+        link = string.format("nui://bostra-fameboy/html/ejs.html?url=%s&params=%s&name=%s&id=%s", "https://static.emulatorgames.net/roms/super-nintendo/Contra%20III%20-%20The%20Alien%20Wars%20(U)%20[!].zip", "snes", "Contraiii-snes", "4205"),
     },
 ```
 CPU/GPU, what do they do?
