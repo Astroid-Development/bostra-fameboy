@@ -1,6 +1,34 @@
 ## bostra-fameboy
 # HEAVILY based on [rcore_arcade](https://github.com/Xogy/rcore_arcade)
 
+This fork is focused on optimizing the original rcore_arcade and d3 fork for QBCore, and adding some new features like crafting levels to accessing different games, and using the game system only as items in the inventory.
+
+	---Fameboy Items
+	['fameboy']                   = { ['name'] = 'fameboy', ['label'] = 'Fameboy', ['weight'] = 125,
+		['type'] = 'item', ['image'] = 'fameboy.png', ['unique'] = true, ['useable'] = true, ['shouldClose'] = true,
+		['combinable'] = { accept = { 'trojan_usb' }, reward = 'fameboyadvanced',
+		anim = { ['dict'] = 'anim@amb@business@weed@weed_inspecting_high_dry@',
+			['lib'] = 'weed_inspecting_high_base_inspector', ['text'] = 'Doing techy stuff...', ['timeOut'] = 7500, } }, ['description'] = 'The Famed and fabled Fameboy' },
+	["brokenretrofameboy"]        = { ["name"] = "brokenretrofameboy", ["label"] = "Broken Retro Fameboy", ["weight"] = 200,
+		["type"] = "item",
+		["image"] = "retrofameboy.png", ["unique"] = false, ["useable"] = false, ["shouldClose"] = false,
+		['combinable'] = { accept = { 'electronickit' }, reward = 'retrofameboy',
+			anim = { ['dict'] = 'anim@amb@business@weed@weed_inspecting_high_dry@',
+				['lib'] = 'weed_inspecting_high_base_inspector', ['text'] = 'Doing techy stuff...', ['timeOut'] = 7500, } },
+		["description"] = "The electronics look fried..." },
+	['retrofameboy']              = { ['name'] = 'retrofameboy', ['label'] = 'Retro Fameboy', ['weight'] = 125,
+		['type'] = 'item', ['image'] = 'retrofameboy.png', ['unique'] = true, ['useable'] = true, ['shouldClose'] = true,
+		['combinable'] = { accept = { 'usb_drive' }, reward = 'fameboy',
+		anim = { ['dict'] = 'anim@amb@business@weed@weed_inspecting_high_dry@',
+			['lib'] = 'weed_inspecting_high_base_inspector', ['text'] = 'Doing techy stuff...', ['timeOut'] = 7500, } }, ['description'] = 'The classic and reliable Retro Fameboy' },
+	['fameboyadvanced']           = { ['name'] = 'fameboyadvanced', ['label'] = 'Fameboy Advanced', ['weight'] = 125,
+		['type'] = 'item', ['image'] = 'fameboyadvanced.png', ['unique'] = true, ['useable'] = true, ['shouldClose'] = true,
+		['combinable'] = nil, ['description'] = 'The advanced Fameboy model' },
+
+
+
+
+
 QBCore Arcade System
 
 This fork features small upgrades and framework dependent changes to improve on the original rcore_arcade.
@@ -29,7 +57,7 @@ EJS:
         -- this is the name in the menu/ game list
         name = "Contra III",
         -- link to ejs page, link to rom, core, uniquename, and unique id (for net play)
-        link = string.format("nui://bostra-fameboy/html/ejs.html?url=%s&params=%s&name=%s&id=%s", "https://static.emulatorgames.net/roms/super-nintendo/Contra%20III%20-%20The%20Alien%20Wars%20(U)%20[!].zip", "snes", "Contraiii-snes", "4205"),
+        link = string.format("nui://bostra-fameboymeboymeboymeboymeboy/html/ejs.html?url=%s&params=%s&name=%s&id=%s", "https://static.emulatorgames.net/roms/super-nintendo/Contra%20III%20-%20The%20Alien%20Wars%20(U)%20[!].zip", "snes", "Contraiii-snes", "4205"),
     },
 ```
 CPU/GPU, what do they do?
