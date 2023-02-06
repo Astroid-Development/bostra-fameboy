@@ -3,7 +3,7 @@
 This fork is focused on optimizing the original rcore_arcade and d3-arcade fork for QBCore, and adding some new features like levels of crafting the different consoles to accessing different games, and using the game system only as items in the inventory.
 
 
-
+Add these items to your qb-core/shared/items.lua
 ```	---Fameboy Items
 	['fameboy']                   = { ['name'] = 'fameboy', ['label'] = 'Fameboy', ['weight'] = 125,
 		['type'] = 'item', ['image'] = 'fameboy.png', ['unique'] = true, ['useable'] = true, ['shouldClose'] = true,
@@ -24,7 +24,8 @@ This fork is focused on optimizing the original rcore_arcade and d3-arcade fork 
 			['lib'] = 'weed_inspecting_high_base_inspector', ['text'] = 'Doing techy stuff...', ['timeOut'] = 7500, } }, ['description'] = 'The classic and reliable Retro Fameboy' },
 	['fameboyadvanced']           = { ['name'] = 'fameboyadvanced', ['label'] = 'Fameboy Advanced', ['weight'] = 125,
 		['type'] = 'item', ['image'] = 'fameboyadvanced.png', ['unique'] = true, ['useable'] = true, ['shouldClose'] = true,
-		['combinable'] = nil, ['description'] = 'The advanced Fameboy model' },```
+		['combinable'] = nil, ['description'] = 'The advanced Fameboy model' },
+````
 
 
 
