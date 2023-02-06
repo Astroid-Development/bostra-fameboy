@@ -2,6 +2,9 @@
 
 This fork is focused on optimizing the original rcore_arcade and d3-arcade fork for QBCore, and adding some new features like levels of crafting the different consoles to accessing different games, and using the game system only as items in the inventory.
 
+Preview:
+https://medal.tv/clips/U2XYQKE7xqxUn/vpGoETYnC?invite=cr-MSxUd1IsNDE3NzM0Njgs
+
 
 Add these items to your qb-core/shared/items.lua
 ```	---Fameboy Items
