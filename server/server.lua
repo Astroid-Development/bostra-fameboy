@@ -1,41 +1,39 @@
 QBCore = exports['qb-core']:GetCoreObject()
 
-local supercomputer = {
-    isInGamingHouse = false,
-    computerType = Config.SuperMachine,
-    computerGPU = Config.GPUList[1],
-    computerCPU = Config.CPUList[1],
-}
-local retrocomputer = {
-    isInGamingHouse = false,
-    computerType = Config.RetroMachine,
-    computerGPU = Config.GPUList[2],
-    computerCPU = Config.CPUList[2],
+local retroconsole = {
+    consoleType = Config.RetroMachine,
+    consoleGPU = Config.GPUList[1],
+    consoleCPU = Config.CPUList[1],
 }
 
-QBCore.Commands.Add('testgames', 'Opens an arcade supercomputer for testing purposes', {}, false, function(source)
+local gamingconsole = {
+    consoleType = Config.GamingMachine,
+    consoleGPU = Config.GPUList[1],
+    consoleCPU = Config.CPUList[1],
+}
+
+local superconsole = {
+    consoleType = Config.SuperMachine,
+    consoleGPU = Config.GPUList[1],
+    consoleCPU = Config.CPUList[1],
+}
+
+--/command to test all games as the fameboy advanced console
+QBCore.Commands.Add('testgames', 'Test Fameboy', {}, false, function(source)
     local src = source
-    TriggerClientEvent('d3-arcade:check:ticket', src, supercomputer)
+    TriggerClientEvent('bostra-fameboy:open:console', src, superconsole)
 end, 'admin')
 
-RegisterNetEvent('d3-arcade:singleUse', function()
-    local src = source
-    local Player = QBCore.Functions.GetPlayer(source)
-    local price = Config.singleUsePrice
-    if not Config.enableGameHouse or Player.Functions.RemoveMoney("cash", price, "arcade") then
-        TriggerClientEvent('d3-arcade:check:ticket', src, retrocomputer)
-    else
-        TriggerClientEvent("d3-arcade:nomoney", source);
-    end
+--Creates 3 types of fameboy consoles
+QBCore.Functions.CreateUseableItem("retrofameboy", function(src,item)
+    TriggerClientEvent('bostra-fameboy:open:console', src, retroconsole)
 end)
 
-RegisterNetEvent("d3-arcade:buyTicket")
-AddEventHandler("d3-arcade:buyTicket", function(ticket)
-    local data = Config.ticketPrice[ticket]
-    local Player = QBCore.Functions.GetPlayer(source)
-    if Player.Functions.RemoveMoney("cash", data.price, "arcade") then
-        TriggerClientEvent("d3-arcade:ticketResult", source, ticket);
-    else
-        TriggerClientEvent("d3-arcade:nomoney", source);
-    end
+QBCore.Functions.CreateUseableItem("fameboy", function(src,item)
+    TriggerClientEvent('bostra-fameboy:open:console', src, gamingconsole)
 end)
+
+QBCore.Functions.CreateUseableItem("fameboyadvanced", function(src,item)
+    TriggerClientEvent('bostra-fameboy:open:console', src, superconsole)
+end)
+

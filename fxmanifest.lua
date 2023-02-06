@@ -6,15 +6,16 @@ dependencies {
 	'qb-target'
 }
 
+author 'Bostra'
+description 'Fameboy Game Console System'
+version '1.0.0'
+
 client_scripts {
 	"locale.lua",
 	"locales/*.lua",
 	"config.lua",
 
-	"client/main.lua",
-	"client/class/*.lua",
-	"client/events.lua",
-	"client/threads.lua",
+	"client/client.lua",
 }
 
 server_script {

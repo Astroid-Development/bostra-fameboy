@@ -6,7 +6,7 @@ Locales['cs'] = {
 	["player_left_arcade"] = "Propadl Vam listek. Musite si koupit novy jestli chcete vstoupit.",
 	["need_to_buy_ticket"] = "Nejdrive si musim koupit listek!",
 	["open_ticket_menu"]   = "zmackni ~INPUT_CONTEXT~ pro interakci borcem.",
-	["open_computer"]      = "zmackni ~INPUT_CONTEXT~ proto abys otevrel pocitac.",
+	["open_console"]      = "zmackni ~INPUT_CONTEXT~ proto abys otevrel pocitac.",
 	["not_enough_money"]   = "Nemate dostatek penez, pardon nemuzu Vam nic prodat!",
 	["bought_ticket"]      = "Koupil jste listek: %s, uzijte si Vas zbyvajici cas v herne. Nezapomente ze mate jenom: %s zbyvajicich minut v herne!",
 
@@ -17,9 +17,9 @@ Locales['cs'] = {
 	["ticket_label"] = "Listek %s",
 
 	["ticket_menu"]     = "Koupit si listek",
-	["computer_menu"]   = "Seznam her v pc",
+	["console_menu"]   = "Seznam her v pc",
 
-	["give_back_ticket"]   = "Odevzdat lístek zpìt ?",
+	["give_back_ticket"]   = "Odevzdat lï¿½stek zpï¿½t ?",
 
 	["yes"] = "ano",
 	["no"] = "ne",
