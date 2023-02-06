@@ -5,6 +5,10 @@ This fork is focused on optimizing the original rcore_arcade and d3-arcade fork 
 Preview:
 https://medal.tv/clips/U2XYQKE7xqxUn/vpGoETYnC?invite=cr-MSxUd1IsNDE3NzM0Njgs
 
+Dependencies:
+MenuAPI: https://github.com/d3st1nyh4x/MenuAPI (planning to switch to qb-menu)
+QBCore Progressbar for item use: https://github.com/qbcore-framework/progressbar
+
 
 Add these items to your qb-core/shared/items.lua
 ```	---Fameboy Items
