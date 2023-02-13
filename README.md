@@ -33,8 +33,29 @@ Add these items to your qb-core/shared/items.lua
 		['type'] = 'item', ['image'] = 'fameboyadvanced.png', ['unique'] = true, ['useable'] = true, ['shouldClose'] = true,
 		['combinable'] = nil, ['description'] = 'The advanced Fameboy model' },
 ````
-
-
+RP Emotes AnimationListCustom.lua propemote addition:
+````
+    ["fameboy"] = { --- Custom Emote By MissSnowie
+    "playing@with_controller",
+    "base",
+    "fameboy",
+    AnimationOptions = {
+        Prop = 'fameboy',
+        PropBone = 24818, --- Chest bone, works fine for sitting down, not soo much with emote moving.
+        PropPlacement = {
+            0.2890,
+            0.4110,
+            0.0020,
+           -44.0174,
+            88.6103,
+            -1.4385
+        },
+        EmoteLoop = true,
+        ExitEmote = "getup",
+        ExitEmoteType = "Exits"
+    }
+},
+````
 
 
 
