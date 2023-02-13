@@ -3,7 +3,7 @@ games { 'gta5' }
 
 dependencies {
 	'MenuAPI',
-	'qb-target'
+	'progressbar'
 }
 
 author 'Bostra'

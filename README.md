@@ -1,4 +1,78 @@
-## bostra-fameboy
+This fork is focused on optimizing the original rcore_arcade and d3-arcade fork for QBCore, and adding some new features like levels of crafting the different consoles to accessing different games, and using the game system only as items in the inventory.
+
+
+Preview-
+https://medal.tv/clips/U2XYQKE7xqxUn/vpGoETYnC?invite=cr-MSxUd1IsNDE3NzM0Njgs
+
+
+Dependencies-
+MenuAPI: https://github.com/d3st1nyh4x/MenuAPI (planning to switch to qb-menu)
+QBCore Progressbar for item use: https://github.com/qbcore-framework/progressbar
+
+
+Optional-
+RPEmotes: https://github.com/TayMcKenzieNZ/rpemotes
+
+
+
+Add these items to your qb-core/shared/items.lua-
+
+```	---Fameboy Items
+	['fameboy']                   = { ['name'] = 'fameboy', ['label'] = 'Fameboy', ['weight'] = 125,
+		['type'] = 'item', ['image'] = 'fameboy.png', ['unique'] = true, ['useable'] = true, ['shouldClose'] = true,
+		['combinable'] = { accept = { 'trojan_usb' }, reward = 'fameboyadvanced',
+		anim = { ['dict'] = 'anim@amb@business@weed@weed_inspecting_high_dry@',
+			['lib'] = 'weed_inspecting_high_base_inspector', ['text'] = 'Doing techy stuff...', ['timeOut'] = 7500, } }, ['description'] = 'The Famed and fabled Fameboy' },
+	["brokenretrofameboy"]        = { ["name"] = "brokenretrofameboy", ["label"] = "Broken Retro Fameboy", ["weight"] = 200,
+		["type"] = "item",
+		["image"] = "retrofameboy.png", ["unique"] = false, ["useable"] = false, ["shouldClose"] = false,
+		['combinable'] = { accept = { 'electronickit' }, reward = 'retrofameboy',
+			anim = { ['dict'] = 'anim@amb@business@weed@weed_inspecting_high_dry@',
+				['lib'] = 'weed_inspecting_high_base_inspector', ['text'] = 'Doing techy stuff...', ['timeOut'] = 7500, } },
+		["description"] = "The electronics look fried..." },
+	['retrofameboy']              = { ['name'] = 'retrofameboy', ['label'] = 'Retro Fameboy', ['weight'] = 125,
+		['type'] = 'item', ['image'] = 'retrofameboy.png', ['unique'] = true, ['useable'] = true, ['shouldClose'] = true,
+		['combinable'] = { accept = { 'usb_drive' }, reward = 'fameboy',
+		anim = { ['dict'] = 'anim@amb@business@weed@weed_inspecting_high_dry@',
+			['lib'] = 'weed_inspecting_high_base_inspector', ['text'] = 'Doing techy stuff...', ['timeOut'] = 7500, } }, ['description'] = 'The classic and reliable Retro Fameboy' },
+	['fameboyadvanced']           = { ['name'] = 'fameboyadvanced', ['label'] = 'Fameboy Advanced', ['weight'] = 125,
+		['type'] = 'item', ['image'] = 'fameboyadvanced.png', ['unique'] = true, ['useable'] = true, ['shouldClose'] = true,
+		['combinable'] = nil, ['description'] = 'The advanced Fameboy model' },
+````
+
+
+Place the fameboy folder inside [prop] in the stream folder for RPEmotes
+RP Emotes AnimationListCustom.lua prop emotes animation additons-
+````
+    ["fameboy"] = { --- Custom Emote By MissSnowie I am just using the animation for my prop
+    "playing@with_controller",
+    "base",
+    "fameboy",
+    AnimationOptions = {
+        Prop = 'fameboy',
+        PropBone = 24818, --- Chest bone, works fine for sitting down, not soo much with emote moving.
+        PropPlacement = {
+            0.2890,
+            0.4110,
+            0.0020,
+           -44.0174,
+            88.6103,
+            -1.4385
+        },
+        EmoteLoop = true,
+        ExitEmote = "getup",
+        ExitEmoteType = "Exits"
+    }
+},
+````
+
+
+
+
+
+
+
+```Original README```
 # HEAVILY based on [rcore_arcade](https://github.com/Xogy/rcore_arcade)
 
 This fork is focused on optimizing the original rcore_arcade and d3 fork for QBCore, and adding some new features like crafting levels to accessing different games, and using the game system only as items in the inventory.
