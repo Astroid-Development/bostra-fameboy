@@ -41,10 +41,10 @@ Add these items to your qb-core/shared/items.lua-
 ````
 
 
-
-RP Emotes AnimationListCustom.lua prop emotes-
+Place the fameboy folder inside [prop] in the stream folder for RPEmotes
+RP Emotes AnimationListCustom.lua prop emotes animation additons-
 ````
-    ["fameboy"] = { --- Custom Emote By MissSnowie
+    ["fameboy"] = { --- Custom Emote By MissSnowie I am just using the animation for my prop
     "playing@with_controller",
     "base",
     "fameboy",
