@@ -1,16 +1,22 @@
-# bostra-fameboy
-
 This fork is focused on optimizing the original rcore_arcade and d3-arcade fork for QBCore, and adding some new features like levels of crafting the different consoles to accessing different games, and using the game system only as items in the inventory.
 
-Preview:
+
+Preview-
 https://medal.tv/clips/U2XYQKE7xqxUn/vpGoETYnC?invite=cr-MSxUd1IsNDE3NzM0Njgs
 
-Dependencies:
+
+Dependencies-
 MenuAPI: https://github.com/d3st1nyh4x/MenuAPI (planning to switch to qb-menu)
 QBCore Progressbar for item use: https://github.com/qbcore-framework/progressbar
 
 
-Add these items to your qb-core/shared/items.lua
+Optional-
+RPEmotes: https://github.com/TayMcKenzieNZ/rpemotes
+
+
+
+Add these items to your qb-core/shared/items.lua-
+
 ```	---Fameboy Items
 	['fameboy']                   = { ['name'] = 'fameboy', ['label'] = 'Fameboy', ['weight'] = 125,
 		['type'] = 'item', ['image'] = 'fameboy.png', ['unique'] = true, ['useable'] = true, ['shouldClose'] = true,
@@ -33,7 +39,10 @@ Add these items to your qb-core/shared/items.lua
 		['type'] = 'item', ['image'] = 'fameboyadvanced.png', ['unique'] = true, ['useable'] = true, ['shouldClose'] = true,
 		['combinable'] = nil, ['description'] = 'The advanced Fameboy model' },
 ````
-RP Emotes AnimationListCustom.lua propemote addition:
+
+
+
+RP Emotes AnimationListCustom.lua prop emotes-
 ````
     ["fameboy"] = { --- Custom Emote By MissSnowie
     "playing@with_controller",
