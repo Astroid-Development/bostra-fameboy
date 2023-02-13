@@ -3,6 +3,9 @@ Config = {}
 -- Which translation you wish to use ?
 Config.Locale = "en"
 
+-- Enable or disable RPEmotes
+Config.RPEmotes = true
+
 -- do not change unless you know what you're doing
 Config.GPUList = {
     [1] = "ETX2080",

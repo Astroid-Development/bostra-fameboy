@@ -35,6 +35,7 @@ function openConsoleMenu(listGames, console_)
 end
 
 RegisterNetEvent('bostra-fameboy:open:console', function(console)
+    if Config. RPEmotes then exports["rpemotes"]:EmoteCommandStart('fameboy', 0) end
     openConsoleMenu(console.consoleType, console)
 end)
 
@@ -51,6 +52,7 @@ RegisterNetEvent('bostra-fameboy:close:console', function()
         EnableAllControlActions(2)
         FreezeEntityPosition(ped, false)
         ClearPedTasks(ped)
+        if Config.RPEmotes then exports["rpemotes"]:EmoteCancel(forceCancel) end
         usingConsole = false
     end
 end)
