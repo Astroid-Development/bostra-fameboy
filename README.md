@@ -43,28 +43,52 @@ Add these items to your qb-core/shared/items.lua-
 
 Place the fameboy-bostra folder in [prop], inside of the stream folder for RPEmotes.
 
-AnimationListCustom.lua prop emote additons-
+AnimationListCustom.lua prop emote additions (thanks to ΛII#6257 for better fitting emote)-
 ````
+-- scully_emotemenu
+    {
+        Label = 'Fameboy',
+        Command = 'fameboy',
+        Animation = 'static',
+        Dictionary = 'amb@code_human_wander_texting_fat@male@base',
+        Options = {
+            Flags = {
+                Loop = true,
+                Move = true,
+            },
+            Props = {
+                {
+                    Bone = 28422,
+                    Name = 'fameboy',
+                    Placement = {
+                        vector3(0.000000, 0.000000, -0.050000),
+                        vector3(0.000000, 0.000000,  0.000000),
+                    },
+                },
+            },
+        },
+    }
+
+    -- RPemotes
     ["fameboy"] = { --- Custom Emote By MissSnowie I am just using the animation for my prop
-    "playing@with_controller",
-    "base",
+    "amb@code_human_wander_texting_fat@male@base",
+    "static",
     "fameboy",
     AnimationOptions = {
         Prop = 'fameboy',
-        PropBone = 24818, --- Chest bone, works fine for sitting down, not soo much with emote moving.
+        PropBone = 28422, --- Chest bone, works fine for sitting down, not soo much with emote moving.
         PropPlacement = {
-            0.2890,
-            0.4110,
-            0.0020,
-           -44.0174,
-            88.6103,
-            -1.4385
+            0.0000,
+            0.0000,
+           -0.0500,
+            0.0000,
+            0.0000,
+            0.0000
         },
         EmoteLoop = true,
         ExitEmote = "getup",
         ExitEmoteType = "Exits"
     }
-},
 ````
 
 
