@@ -6,7 +6,7 @@ https://medal.tv/clips/U2XYQKE7xqxUn/vpGoETYnC?invite=cr-MSxUd1IsNDE3NzM0Njgs
 
 
 Dependencies-
-MenuAPI: https://github.com/d3st1nyh4x/MenuAPI (planning to switch to qb-menu)
+MenuAPI: https://github.com/d3st1nyh4x/MenuAPI (qb-menu eventually...)
 QBCore Progressbar for item use: https://github.com/qbcore-framework/progressbar
 
 
