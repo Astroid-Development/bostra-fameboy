@@ -55,7 +55,7 @@ Config.RetroMachine = {
 
 -- game list for super console
 Config.SuperMachine = {
-    {
+    }
 
 
 for i = 1, #Config.RetroMachine do
