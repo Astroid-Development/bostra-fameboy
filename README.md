@@ -67,9 +67,9 @@ Add the emote in animations/prop_emotes.lua
 
 # Credits
 
-* For the origional code [Link](https://github.com/Xogy/rcore_arcade)
-* Fork/improvements [Link](https://github.com/d3st1nyh4x/d3-arcade)
-* Fork/improvements :) [Link](https://github.com/B0STRA/bostra-fameboy)
+* For the original code [Link](https://github.com/Xogy/rcore_arcade) (Xogy)
+* Fork/improvements [Link](https://github.com/d3st1nyh4x/d3-arcade) (d3st1nyh4x)
+* Fork/improvements :) [Link](https://github.com/B0STRA/bostra-fameboy) (B0STRA)
 
 TODO: 
 * Finish swapping cartridges?
