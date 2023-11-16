@@ -1,8 +1,9 @@
-local QBCore = exports["qb-core"]:GetCoreObject()
 local GamesList = require("shared/config")
 
-QBCore.Functions.CreateUseableItem("fameboy", function(source, item)
-    TriggerClientEvent("fameboy:open:console", source, item)
+exports("UseFameboy", function(event, item, inventory, slot, data)
+	if event == "usingItem" then
+		TriggerClientEvent("fameboy:open:console", inventory.id, exports.ox_inventory:GetSlot(inventory.id, slot))
+	end
 end)
 
 lib.callback.register("fameboy:server:returncards", function(source)

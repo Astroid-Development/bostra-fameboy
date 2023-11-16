@@ -13,12 +13,24 @@ ox_lib: https://github.com/overextended/ox_lib
 Add these items to your ox_inventory/data/items.lua-
 
 ```	---Fameboy Items
+	["fameboy"] = {
+		label = "Fame Boy",
+		weight = 0,
+		stack = false,
+		close = true,
+		consume = 0,
+		description = "You can store all your games on this device",
+		server = {
+			export = "bostra-fameboy.UseFameboy"
+		}
+	},
+
 	["fameboy_gamecartridge"] = {
 		label = "Fame Boy Game Cartridge",
 		weight = 0,
 		stack = false,
 		close = true,
-		description = "You can store all your games on this device",
+		description = "A storage device for all your games, you can insert it into your fameboy",
 		client = {
 			image = "fameboy_game.png",
 		}
@@ -32,17 +44,6 @@ Add these items to your ox_inventory/data/items.lua-
 		description = "",
 		client = {
 			image = "fameboy_game.png",
-		}
-	},
-
-	["fameboy"] = {
-		label = "Fameboy",
-		weight = 0,
-		stack = false,
-		close = true,
-		description = "Play all your favorite games on this device on the go!",
-		client = {
-			image = "fameboy.png",
 		}
 	},
 ````
