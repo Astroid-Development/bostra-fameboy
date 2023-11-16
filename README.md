@@ -8,7 +8,7 @@ ox_lib: https://github.com/overextended/ox_lib
 
 # Preview
 
-[![Preview](https://img.youtube.com/vi/c0vZLp0ZtrI/0.jpg)](https://www.youtube.com/watch?v=c0vZLp0ZtrI)
+[![Preview](https://img.youtube.com/vi/xtJCeAv0iy8/0.jpg)](https://www.youtube.com/watch?v=xtJCeAv0iy8)
 
 Add these items to your ox_inventory/data/items.lua-
 
@@ -34,35 +34,17 @@ Add these items to your ox_inventory/data/items.lua-
 			image = "fameboy_game.png",
 		}
 	},
-````
 
-
-Place the fameboy-bostra folder in [Props], inside of the stream folder for Scully EmoteMenu.
-
-Add the emote in animations/prop_emotes.lua
-````
-    {
-        Label = 'Fameboy',
-        Command = 'fameboy',
-        Animation = 'static',
-        Dictionary = 'amb@code_human_wander_texting_fat@male@base',
-        Options = {
-            Flags = {
-                Loop = true,
-                Move = true,
-            },
-            Props = {
-                {
-                    Bone = 28422,
-                    Name = 'fameboy',
-                    Placement = {
-                        vector3(0.000000, 0.000000, -0.050000),
-                        vector3(0.000000, 0.000000,  0.000000),
-                    },
-                },
-            },
-        },
-    }
+	["fameboy"] = {
+		label = "Fameboy",
+		weight = 0,
+		stack = false,
+		close = true,
+		description = "Play all your favorite games on this device on the go!",
+		client = {
+			image = "fameboy.png",
+		}
+	},
 ````
 
 # Credits
@@ -70,7 +52,3 @@ Add the emote in animations/prop_emotes.lua
 * For the original code [Link](https://github.com/Xogy/rcore_arcade) (Xogy)
 * Fork/improvements [Link](https://github.com/d3st1nyh4x/d3-arcade) (d3st1nyh4x)
 * Fork/improvements :) [Link](https://github.com/B0STRA/bostra-fameboy) (B0STRA)
-
-TODO: 
-* Finish swapping cartridges?
-* GPU/CPU Handling
