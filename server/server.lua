@@ -1,4 +1,4 @@
-local QBCore = exports["ad-core"]:GetCoreObject()
+local QBCore = exports["qb-core"]:GetCoreObject()
 local GamesList = require("shared/config")
 
 QBCore.Functions.CreateUseableItem("fameboy", function(source, item)
