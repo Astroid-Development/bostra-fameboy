@@ -1,33 +1,17 @@
-fx_version 'adamant'
-games { 'gta5' }
+fx_version "adamant"
+games { "gta5" }
 
-author 'Bostra'
-description 'Fameboy Game Console System'
-version '1.0.0'
+author "Bostra"
+description "Fameboy Game Console System"
+version "1.0.0"
 
-shared_scripts {
-	"@ox_lib/init.lua"
-}
+files { "html/css/*.css", "html/*.html", "html/scripts/*.js" }
+shared_scripts { "@ox_lib/init.lua", "shared/*.lua"}
+client_scripts { "client/*.lua"}
+server_script { "server/*.lua" }
 
-client_scripts {
-	"config.lua",
-	"client/client.lua",
-}
 
-server_script {
-	"locale.lua",
-	"locales/*.lua",
-	"config.lua",
-	"server/server.lua",
-}
-
-files {
-	"html/css/style.css",
-	"html/css/reset.css",
-	"html/*.html",
-	"html/scripts/listener.js",
-}
-
+data_file "DLC_ITYP_REQUEST" "stream/fameboy.ytyp"
 ui_page "html/index.html"
 
-lua54 'yes'
+lua54 "yes"
