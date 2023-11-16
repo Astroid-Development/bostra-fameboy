@@ -1,36 +1,42 @@
-local QBCore = exports["qb-core"]:GetCoreObject()
-
-local gamingconsole = {GPU = Config.GPUList[1], CPU = Config.CPUList[1]}
+local QBCore = exports["ad-core"]:GetCoreObject()
+local GamesList = require("shared/config")
 
 QBCore.Functions.CreateUseableItem("fameboy", function(source, item)
-    TriggerClientEvent("fameboy:open:console", source, gamingconsole, item)
+    TriggerClientEvent("fameboy:open:console", source, item)
 end)
 
-lib.callback.register("fameboy:server:cartridgecheck", function(source)
-	local Inventory = exports.ox_inventory:Search(source, "slots", "fameboy_gamecartridge")
-	return Inventory
+lib.callback.register("fameboy:server:returncards", function(source)
+	return exports.ox_inventory:Search(source, "slots", "fameboy_gamecartridge")
 end)
 
-lib.callback.register("fameboy:Server:checkinventorygames", function(source)
-	local Inventory = exports.ox_inventory:Search(source, "slots", "fameboy_game")
-	return Inventory
+lib.callback.register("fameboy:server:returngames", function(source)
+	return exports.ox_inventory:Search(source, "slots", "fameboy_game")
 end)
 
-RegisterNetEvent("fameboy:server:InsertGameCartridge", function(data)
+lib.callback.register("fameboy:server:updatefameboy", function(source, slot)
+	return exports.ox_inventory:GetSlot(source, slot)
+end)
+
+lib.callback.register("fameboy:server:InsertSDCard", function(source, data)
 	exports.ox_inventory:RemoveItem(source, "fameboy_gamecartridge", 1, nil, data.Cartridge.slot)
-	exports.ox_inventory:SetMetadata(source, data.Fameboy.slot, {
-		gamecartridge = data.Cartridge.metadata.gamecartridge
-	})
-end)	
-
-RegisterNetEvent("fameboy:server:UninstallCartridge", function(data)
-	exports.ox_inventory:AddItem(source, "fameboy_gamecartridge", 1, {
-		gamecartridge = data.Fameboy.metadata.gamecartridge
-	})
-	exports.ox_inventory:SetMetadata(source, data.Fameboy.slot, {})
+	exports.ox_inventory:SetMetadata(source, data.Fameboy.slot, data.Cartridge.metadata)
+	return exports.ox_inventory:GetSlot(source, data.Fameboy.slot)
 end)
 
-RegisterNetEvent("fameboy:server:InstallGame", function(data)
+lib.callback.register("fameboy:server:UninstallSDCard", function(source, data)
+	exports.ox_inventory:AddItem(source, "fameboy_gamecartridge", 1, data.Fameboy.metadata)
+	exports.ox_inventory:SetMetadata(source, data.Fameboy.slot, {})
+	return exports.ox_inventory:GetSlot(source, data.Fameboy.slot)
+end)
+
+lib.callback.register("fameboy:server:SwapSDCards", function(source, data)
+	exports.ox_inventory:AddItem(source, "fameboy_gamecartridge", 1, data.Fameboy.metadata)
+	exports.ox_inventory:SetMetadata(source, data.Fameboy.slot, data.Cartridge.metadata)
+	exports.ox_inventory:RemoveItem(source, "fameboy_gamecartridge", 1, data.Cartridge.metadata, data.Cartridge.slot)
+	return exports.ox_inventory:GetSlot(source, data.Fameboy.slot)
+end)
+
+lib.callback.register("fameboy:server:InstallGame", function(source, data)
 	local GameData = data.Fameboy.metadata.gamecartridge
 	local GameToInstall = { game = data.Cartridge.metadata.game, gamedurability = data.Cartridge.metadata.durability or 100 }
 
@@ -41,81 +47,82 @@ RegisterNetEvent("fameboy:server:InstallGame", function(data)
 	table.insert(GameData.installed, GameToInstall)
 
 	exports.ox_inventory:RemoveItem(source, "fameboy_game", 1, nil, data.Cartridge.slot)
-	exports.ox_inventory:SetMetadata(source, data.Fameboy.slot, {
-		gamecartridge = GameData
-	})
+	exports.ox_inventory:SetMetadata(source, data.Fameboy.slot, data.Fameboy.metadata)
+	return exports.ox_inventory:GetSlot(source, data.Fameboy.slot)
 end)
 
-RegisterNetEvent("fameboy:server:UninstallGame", function(data)
-	local GameData = data.Fameboy.metadata.gamecartridge
-	local UninstallGame = data.Uninstall
-
-	for ID, Game in pairs(GameData.installed) do 
-		if Game.game == UninstallGame then
-			local ImageName = string.gsub(Game.game, " ", "_")
+lib.callback.register("fameboy:server:UninstallGame", function(source, data)
+	for ID, Game in pairs(data.Fameboy.metadata.gamecartridge.installed) do 
+		if Game.game == data.Uninstall.game then
 			exports.ox_inventory:AddItem(source, "fameboy_game", 1, {
-				description = ("Game: %s"):format(UninstallGame),
-				image = ImageName,
-				durability = Game.gamedurability,
-				game = UninstallGame
+				description = ("Game: %s"):format(data.Uninstall.game),
+				image = string.gsub(Game.game, " ", "_"),
+				game = data.Uninstall.game,
+				durability = data.Uninstall.gamedurability
 			})
-			table.remove(GameData.installed, ID)
+			table.remove(data.Fameboy.metadata.gamecartridge.installed, ID)
+			exports.ox_inventory:SetMetadata(source, data.Fameboy.slot, data.Fameboy.metadata)
 			break
 		end
 	end
-
-	exports.ox_inventory:SetMetadata(source, data.Fameboy.slot, {
-		gamecartridge = GameData
-	})
+	return exports.ox_inventory:GetSlot(source, data.Fameboy.slot)
 end)
 
-RegisterNetEvent("fameboy:server:UpdateGameDurability", function(Fameboy, UsedGame)
-	local GameData = Fameboy.metadata.gamecartridge
-	for ID, Game in pairs(GameData.installed) do 
+lib.callback.register("fameboy:server:updategamedurability", function(source, Fameboy, UsedGame)
+	for ID, Game in pairs(Fameboy.metadata.gamecartridge.installed) do
 		if Game.game == UsedGame then
 			Game.gamedurability = Game.gamedurability - math.random(1, 5)
-			exports.ox_inventory:SetMetadata(source, Fameboy.slot, {
-				gamecartridge = GameData
-			})
+			exports.ox_inventory:SetMetadata(source, Fameboy.slot, Fameboy.metadata)
 		end
 	end
+	return true
 end)
 
-RegisterNetEvent("fameboy:server:RemoveCorruptedGame", function(Fameboy, UsedGame)
-	local GameData = Fameboy.metadata.gamecartridge 
-	local UninstallGame = UsedGame
-
-	for ID, Game in pairs(GameData.installed) do
-		if Game.game == UninstallGame then
-			table.remove(GameData.installed, ID)
+lib.callback.register("fameboy:server:removecorruptedgame", function(source, Fameboy, UsedGame)
+	for ID, Game in pairs(Fameboy.metadata.gamecartridge.installed) do
+		if Game.game == UsedGame then
+			table.remove(Fameboy.metadata.gamecartridge.installed, ID)
 			break
 		end
 	end
-	exports.ox_inventory:SetMetadata(source, Fameboy.slot, {
-		gamecartridge = GameData
-	})
+	exports.ox_inventory:SetMetadata(source, Fameboy.slot, Fameboy.metadata)
+	return exports.ox_inventory:GetSlot(source, Fameboy.slot)
 end)
 
-lib.addCommand('givegames', {
-    help = 'Gives an item to a player',
-    restricted = 'group.admin'
-}, function(source, args, raw)
-	for k,v in pairs(Config.GamingMachine) do 
-		local GameName = v.name
-		local ImageName = string.gsub(GameName, " ", "_")
-		exports.ox_inventory:AddItem(source, "fameboy_game", 1, {
-			description = ("Game: %s"):format(GameName),
-			image = ImageName,
-			game = GameName
-		})
+local ShopItems = {}
+
+CreateThread(function()
+	ShopItems[#ShopItems+1] = {
+		name = "fameboy",
+		price = 500,
+	}
+
+	ShopItems[#ShopItems+1] = {
+		name = "fameboy_gamecartridge",
+		price = 100,
+		metadata = {
+			gamecartridge = {
+				installed = {
+
+				}
+			}
+		}
+	}
+
+	for Game, _ in pairs(GamesList) do
+		ShopItems[#ShopItems+1] = {
+			name = "fameboy_game",
+			price = 500,
+			metadata = {
+				description = ("Game: %s"):format(Game),
+				image = string.gsub(Game, " ", "_"),
+				game = Game,
+			}
+		}
 	end
-end)
 
-lib.addCommand('givegamecartridge', {
-    help = 'Gives an item to a player',
-    restricted = 'group.admin'
-}, function(source, args, raw)
-	exports.ox_inventory:AddItem(source, "fameboy_gamecartridge", 1, {
-		gamecartridge = {}
+	exports.ox_inventory:RegisterShop("fameboy_shop", {
+		name = "Game Store",
+		inventory = ShopItems,
 	})
 end)
